@@ -35,7 +35,10 @@ namespace LetterWordExercise
         private List<List<string>> AppendParts(string word, Dictionary<string, int> partCounts)
         {
             if (word.Length == 0)
-                return [new List<string>()];
+                return
+                [
+                    [],
+                ];
 
             var key = (
                 word,
