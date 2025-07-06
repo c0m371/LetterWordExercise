@@ -1,17 +1,12 @@
 namespace LetterWordExercise
 {
-    public class WordSolver
+    public class WordSolver(List<string> words, List<string> parts)
     {
-        private readonly List<string> words;
-        private readonly Dictionary<string, int> partCounts;
-        private readonly Dictionary<(string word, string partKey), List<List<string>>> cache;
-
-        public WordSolver(List<string> words, List<string> parts)
-        {
-            this.words = words;
-            partCounts = parts.GroupBy(p => p).ToDictionary(g => g.Key, g => g.Count());
-            cache = [];
-        }
+        private readonly List<string> words = words;
+        private readonly Dictionary<string, int> partCounts = parts
+            .GroupBy(p => p)
+            .ToDictionary(g => g.Key, g => g.Count());
+        private readonly Dictionary<(string word, string partKey), List<List<string>>> cache = [];
 
         public List<Word> GetWords()
         {
@@ -57,7 +52,7 @@ namespace LetterWordExercise
                 if (count == 0 || !word.StartsWith(part))
                     continue;
 
-                var remainingWord = word.Substring(part.Length);
+                var remainingWord = word[part.Length..];
 
                 partCounts[part]--;
 

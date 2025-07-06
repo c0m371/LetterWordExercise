@@ -9,7 +9,7 @@ namespace LetterWordExercise
             {
                 return text;
             }
-            return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
+            return text[..pos] + replace + text[(pos + search.Length)..];
         }
     }
 }
