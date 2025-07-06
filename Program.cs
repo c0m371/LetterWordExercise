@@ -1,4 +1,6 @@
-﻿var input = new List<string>();
+﻿using LetterWordExercise;
+
+var input = new List<string>();
 string? line = Console.ReadLine();
 while (!string.IsNullOrWhiteSpace(line))
 {
