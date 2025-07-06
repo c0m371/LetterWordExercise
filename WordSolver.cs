@@ -44,10 +44,10 @@ public class WordSolver
 
         var result = new List<List<string>>();
 
-        foreach (var kvp in partCounts)
+        foreach (var partCount in partCounts)
         {
-            var part = kvp.Key;
-            var count = kvp.Value;
+            var part = partCount.Key;
+            var count = partCount.Value;
 
             if (count == 0 || !word.StartsWith(part))
                 continue;
@@ -56,13 +56,13 @@ public class WordSolver
 
             partCounts[part]--;
 
-            var subCombos = AppendParts(remainingWord, partCounts);
+            var subCombinations = AppendParts(remainingWord, partCounts);
 
-            foreach (var combo in subCombos)
+            foreach (var combination in subCombinations)
             {
                 result.Add(
                     new List<string> { part }
-                        .Concat(combo)
+                        .Concat(combination)
                         .ToList()
                 );
             }
